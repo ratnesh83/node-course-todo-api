@@ -18,7 +18,7 @@ app.post('/todos' ,authenticate,(req,res)=>{
     console.log(req.body.text);
     var todo = new Todo({
         text:req.body.text,
-        _creator:req.user._id
+        _created:req.user._id
     });
 
     todo.save().then((doc)=>{
