@@ -50,7 +50,7 @@ app.get('/todos/:id',authenticate,(req,res)=>{
     }
     Todo.findOne({
         _id:id,
-        _creator:req.user._id
+        _created:req.user._id
     }).then((todo)=>{
         if(!todo){
             return res.status(404).send();
@@ -103,7 +103,7 @@ app.patch('/todos/:id',authenticate,(req,res)=>{
         body.completedAt = null;
     }
 
-    Todo.findOneAndUpdate({_id:id,_creator:req.user._id},{$set:body},{new:true}).then((todo)=>{
+    Todo.findOneAndUpdate({_id:id,_created:req.user._id},{$set:body},{new:true}).then((todo)=>{
         if(!todo){
             return res.status(404).send();
         }
