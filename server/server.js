@@ -31,7 +31,7 @@ app.post('/todos' ,authenticate,(req,res)=>{
 
 app.get('/todos',authenticate,(req,res)=>{
    Todo.find({
-       _creator:req.user._id
+       _created:req.user._id
    }).then((todos)=>{
        res.send({
            todos
